@@ -5,12 +5,36 @@ provider "azurerm" {
   subscription_id = var.subscription_id
 }
 
+provider "random" {
+
+}
 resource "azurerm_resource_group" "main" {
   name     = var.resource_group
   location = var.location
   tags     = merge(var.tags, { system = "root" })
 }
 
+resource "random_string" "main" {
+  length  = 5
+  special = false
+  upper   = false
+}
+
+resource "azurerm_storage_account" "main" {
+  name                     = "tftraining${random_string.main.result}"
+  resource_group_name      = var.resource_group
+  location                 = var.location
+  account_tier             = "Standard"
+  access_tier              = "Hot"
+  account_replication_type = "LRS"
+  depends_on               = [azurerm_resource_group.main]
+}
+
+resource "azurerm_storage_container" "main" {
+  name                 = "terraformcontainer"
+  storage_account_name = azurerm_storage_account.main.name
+  depends_on           = [azurerm_storage_account.main]
+}
 
 resource "azurerm_virtual_network" "main" {
   name                = var.vnet
