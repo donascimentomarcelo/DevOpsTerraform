@@ -1,13 +1,4 @@
-provider "azurerm" {
-  features {
 
-  }
-  subscription_id = var.subscription_id
-}
-
-provider "random" {
-
-}
 resource "azurerm_resource_group" "main" {
   name     = var.resource_group
   location = var.location
