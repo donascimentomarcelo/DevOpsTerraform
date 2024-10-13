@@ -8,17 +8,22 @@ terraform validate
 terraform plan
 terraform apply
 terraform destroy
-terraform plan -var-file="dev/main.tfvars" -state="dev/main.tfstate" -out="dev/main.tfplan"
 
-terraform plan -var-file="hml/main.tfvars" -state="hml/main.tfstate" -out="hml/main.tfplan"
+# cd modules/dev
 
-terraform apply -var-file="dev/main.tfvars" -state="dev/main.tfstate"
+terraform plan -var-file="main.tfvars" -state="main.tfstate" -out="main.tfplan"
+terraform apply -var-file="main.tfvars" -state="main.tfstate"
+terraform destroy -var-file="main.tfvars" -state="main.tfstate"
 
-terraform apply -var-file="hml/main.tfvars" -state="hml/main.tfstate"
+// terraform plan -var-file="modules/modules/hml/main.tfvars" -state="modules/hml/main.tfstate" -out="modules/hml/main.tfplan"
 
-terraform destroy -var-file="dev/main.tfvars" -state="dev/main.tfstate"
+# cd modules/hml
 
-terraform destroy -var-file="hml/main.tfvars" -state="hml/main.tfstate"
+terraform plan -var-file="main.tfvars" -state="main.tfstate" -out="main.tfplan"
+terraform apply -var-file="main.tfvars" -state="main.tfstate"
+terraform destroy -var-file="main.tfvars" -state="main.tfstate"
+
+// terraform apply -var-file="modules/hml/main.tfvars" -state="modules/hml/main.tfstate"
 
 # Az Commands
 
