@@ -38,3 +38,13 @@ terraform workspace show
 terraform workspace new dev
 
 terraform workspace select dev
+
+# terraform template
+
+npm install -g yo@4.3.1 generator-generator
+
+npm install -g generator-az-terra-module
+
+### run
+
+yo az-terra-module
