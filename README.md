@@ -28,3 +28,13 @@ terraform destroy -var-file="main.tfvars" -state="main.tfstate"
 # Az Commands
 
 az group list
+
+# terraform workspace
+
+terraform workspace list
+
+terraform workspace show
+
+terraform workspace new dev
+
+terraform workspace select dev
