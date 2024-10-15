@@ -36,4 +36,8 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+# vscode config
 .vscode
+
+# Terragrunt Cache
+**/.terragrunt-cache/*

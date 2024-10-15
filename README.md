@@ -48,3 +48,11 @@ npm install -g generator-az-terra-module
 ### run
 
 yo az-terra-module
+
+# terragrunt commands
+
+terragrunt plan -var-file="main.tfvars"
+
+terragrunt apply -var-file="main.tfvars" --auto-approve
+
+terragrunt destroy -var-file="main.tfvars" --auto-approve
